@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shyliah Heads">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear Ninja Hunter</title>
+</head>
+<body>
+    <h1>Bear Ninja Hunter Game</h1>
+    <p id="demo">Your game results will appear here!</p>
+
+    <script>
+        // Welcome the player
+        let playerName = prompt("Welcome! Please enter your name to start the game:");
+
+        // Greet the player with an alert
+        alert("Hello " + playerName + "! Get ready to play Bear Ninja Hunter!");
+
+        // Prompt player for their choice
+        let playerChoice = prompt("Choose your character: Bear, Ninja, or Hunter");
+
+        // Hard-coded computer choice
+        let computerChoice = "Bear";
+
+        // Display results on the HTML page
+        document.getElementById("demo").innerHTML = playerName + " chose " + playerChoice + ". Computer chose " + computerChoice + ".";
+
+        // Log results to the console with concatenation and template literal
+        console.log(playerName + " picked " + playerChoice + " and the computer picked " + computerChoice + ".");
+        console.log(`${playerName} is ready to battle!`);
+    </script>
+</body>
+</html>
