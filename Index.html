@@ -32,3 +32,175 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Shyliah Heads">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bear Ninja Hunter</title>
+
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#f4f6f8;
+    text-align:center;
+    padding:40px;
+}
+
+#demo{
+    margin-top:20px;
+    font-size:18px;
+    background:white;
+    padding:20px;
+    display:inline-block;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Bear Ninja Hunter Game</h1>
+<p id="demo">Your game results will appear here!</p>
+
+<script>
+
+// variables
+let playerName = "";
+let playerChoice = "";
+let computerChoice = "";
+let winner = "";
+let playAgain = true;
+
+// array with the game options
+const gameChoices = ["BEAR","NINJA","HUNTER"];
+
+
+// ask for player name
+playerName = prompt("Welcome! Please enter your name to start the game:");
+
+if(playerName === null || playerName === ""){
+    alert("Game cancelled. Please refresh the page to try again.");
+}
+else{
+
+    alert("Hello " + playerName + "! Get ready to play Bear Ninja Hunter!");
+
+
+// main game loop
+while(playAgain){
+
+    // player picks
+    playerChoice = prompt(
+        "Choose your character: Bear, Ninja, or Hunter"
+    );
+
+    if(playerChoice === null){
+        alert("Game cancelled. Refresh page to restart.");
+        break;
+    }
+
+    // force case so it matches array
+    playerChoice = playerChoice.toUpperCase();
+
+    // check for bad input
+    if(
+        playerChoice !== "BEAR" &&
+        playerChoice !== "NINJA" &&
+        playerChoice !== "HUNTER"
+    ){
+        alert("Invalid input. Please enter Bear, Ninja, or Hunter.");
+        continue;
+    }
+
+
+    // random computer choice
+    let randomIndex =
+        Math.floor(Math.random() * gameChoices.length);
+
+    computerChoice = gameChoices[randomIndex];
+
+
+    // decide winner
+    switch(playerChoice){
+
+        case "BEAR":
+
+            if(computerChoice === "HUNTER"){
+                winner = playerName + " wins!";
+            }
+            else if(computerChoice === "NINJA"){
+                winner = "Computer wins!";
+            }
+            else{
+                winner = "It's a tie!";
+            }
+
+        break;
+
+
+        case "NINJA":
+
+            if(computerChoice === "BEAR"){
+                winner = playerName + " wins!";
+            }
+            else if(computerChoice === "HUNTER"){
+                winner = "Computer wins!";
+            }
+            else{
+                winner = "It's a tie!";
+            }
+
+        break;
+
+
+        case "HUNTER":
+
+            if(computerChoice === "NINJA"){
+                winner = playerName + " wins!";
+            }
+            else if(computerChoice === "BEAR"){
+                winner = "Computer wins!";
+            }
+            else{
+                winner = "It's a tie!";
+            }
+
+        break;
+    }
+
+
+    // show results in alert
+    alert(
+        playerName + " chose " + playerChoice + ".\n" +
+        "Computer chose " + computerChoice + ".\n" +
+        winner
+    );
+
+    // also log to console
+    console.log(
+        playerName + " chose " + playerChoice +
+        " | Computer chose " + computerChoice +
+        " | " + winner
+    );
+
+    // ask to play again
+    playAgain = confirm("Would you like to play again?");
+}
+
+
+// final result on page
+document.getElementById("demo").innerHTML =
+    playerName + " chose " + playerChoice +
+    ". Computer chose " + computerChoice +
+    ". " + winner;
+
+}
+
+</script>
+
+</body>
+</html>
