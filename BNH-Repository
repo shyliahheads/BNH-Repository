@@ -1,0 +1,48 @@
+// Store game choices in array
+let choices = ["Bear", "Ninja", "Hunter"];
+
+// Win counters
+let playerWins = 0;
+let computerWins = 0;
+
+function playGame(playerChoice) {
+
+    // Random computer choice
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    let computerChoice = choices[randomIndex];
+
+    let result = "";
+
+    if (playerChoice === computerChoice) {
+        result = "It's a Tie!";
+    }
+    else if (
+        (playerChoice === "Bear" && computerChoice === "Ninja") ||
+        (playerChoice === "Ninja" && computerChoice === "Hunter") ||
+        (playerChoice === "Hunter" && computerChoice === "Bear")
+    ) {
+        result = "You Win!";
+        playerWins++;
+    }
+    else {
+        result = "Computer Wins!";
+        computerWins++;
+    }
+
+    // Display results
+    document.getElementById("resultsText").innerHTML =
+        "You chose: " + playerChoice + "<br>" +
+        "Computer chose: " + computerChoice + "<br><br>" +
+        result;
+
+    document.getElementById("winCounter").innerHTML =
+        "Player Wins: " + playerWins + "<br>" +
+        "Computer Wins: " + computerWins;
+
+    document.getElementById("resultsBox").classList.remove("hidden");
+}
+
+// Reset display but keep win totals
+function resetDisplay() {
+    document.getElementById("resultsBox").classList.add("hidden");
+}
